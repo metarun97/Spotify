@@ -1,28 +1,27 @@
-import express from "express";
-import morgan from "morgan";
-import cookieParser from "cookie-parser";
-import authRoutes from './routes/auth.routes.js';
-import passport from "passport";
-import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import express from 'express';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
+import authRoutes from "./routes/auth.routes.js";
+import passport from 'passport';
+import {Strategy as GoogleStrategy} from "passport-google-oauth20";
 import config from './config/config.js';
 
-
-/* Server Created */
+/* Server created */
 const app = express();
 
-/* Use morgan for track activities of Server */
+/* For track server's activity */
 app.use(morgan("dev"));
 
-/* Use cookieParser for read cookies */
+/* For read cookies data */
 app.use(cookieParser());
 
-/* Middleware to read req.body data */
+/* For read server's req.body data */
 app.use(express.json());
 
-/* Middleware to parse form data */
+/* For parse the form data */
 app.use(express.urlencoded({ extended: true }));
 
-/* Middleware to parse form data */
+/*  */
 app.use(passport.initialize());
 
 // Configure Passport to use Google OAuth 2.0 strategy
@@ -35,6 +34,7 @@ passport.use(new GoogleStrategy({
   // For this example, we'll just return the profile
   return done(null, profile);
 }));
+
 
 
 /* Auth routes with prefix */

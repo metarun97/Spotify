@@ -1,10 +1,8 @@
 import express from "express";
 
 
-/* Server Created */
+/* Server created */
 const app = express();
-
-
 
 
 

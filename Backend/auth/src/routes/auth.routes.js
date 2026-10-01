@@ -1,8 +1,7 @@
-import express from 'express';
+import express from "express";
 import * as authController from "../controllers/auth.controller.js";
 import * as validatonRules from "../middlewares/validation.middleware.js";
-import passport from 'passport';
-
+import passport from "passport";
 
 /* Router Created */
 const router = express.Router();
@@ -17,9 +16,10 @@ router.post("/register", validatonRules.registerUserValidationRules, authControl
 
 /**
  * @route /api/auth/google
- * @description register a user
+ * @description Route to initiate Google OAuth flow
  * @access public
  */
+//
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
@@ -27,14 +27,15 @@ router.get('/google',
 
 /**
  * @route /api/auth/google/callback
- * @description register a user
+ * @description Callback route that Google will redirect to after authentication
  * @access public
  */
 router.get('/google/callback',
-  passport.authenticate('google', { session: false }),
-  authController.googleAuthCallback
-);
+  passport.authenticate('google', { session: false }), authController.googleAuthCallback);
+
+
 
 
 
 export default router;
+
