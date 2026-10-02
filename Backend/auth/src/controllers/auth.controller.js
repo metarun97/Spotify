@@ -1,8 +1,9 @@
-import userModel from './../models/user.model.js';
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import config from '../config/config.js';
+import userModel from './../models/user.model.js';
 import { publishToQueue } from '../broker/rabbit.js'
+
 
 /**
  * @name register
@@ -21,6 +22,7 @@ export const register = async (req, res) => {
       })
     }
 
+
     const hash = await bcrypt.hash(password, 10);
 
     const user = await userModel.create({
@@ -28,6 +30,7 @@ export const register = async (req, res) => {
       password: hash,
       fullname: { firstName, lastName },
     })
+
 
     const token = jwt.sign({
       id: user._id,
@@ -62,6 +65,59 @@ export const register = async (req, res) => {
     })
   }
 }
+
+/**
+ * @name login
+ * @description accept email and password
+ * @access public
+ */
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({
+        messsage: "Invalid Email or Password!"
+      })
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+
+    if (!isPasswordValid) {
+      return res.status(400).json({
+        messsage: "Invalid Email or Password!"
+      })
+    }
+
+
+    const token = jwt.sign({
+      id: user._id,
+      role: user.role,
+    }, config.JWT_SECRET, { expiresIn: "2d" })
+
+
+    res.cookie("token", token);
+
+    res.status(200).json({
+      message: "User Logged in successfully!",
+      user: {
+        id: user._id,
+        email: user.email,
+        fullname: user.fullname,
+        role: user.role,
+      }
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error to Login a user"
+    })
+  }
+}
+
 
 /**
  * @name googleAuthCallback

@@ -8,14 +8,14 @@ const validate = async (req, res, next) => {
 
   if (!errors.isEmpty()) {
 
-    return res.status().json({ errors: errors.array() })
+    return res.status(400).json({ errors: errors.array() })
   }
 
   next();
 }
 
 
-/* Roles for Registeration */
+/* Roles for Register */
 export const registerUserValidationRules = [
   body("email")
     .isEmail()
@@ -32,6 +32,19 @@ export const registerUserValidationRules = [
   body("fullname.lastName")
     .notEmpty()
     .withMessage("Last name is required"),
+
+  validate,
+]
+
+/* Roles for Login */
+export const LoginUserValidationRules = [
+  body("email")
+    .isEmail()
+    .withMessage("Invalid email address"),
+
+  body("password")
+    .notEmpty()
+    .withMessage("Password is required"),
 
   validate,
 ]

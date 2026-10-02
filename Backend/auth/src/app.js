@@ -3,11 +3,20 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import authRoutes from "./routes/auth.routes.js";
 import passport from 'passport';
-import {Strategy as GoogleStrategy} from "passport-google-oauth20";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import config from './config/config.js';
+import cors from "cors";
+
 
 /* Server created */
 const app = express();
+
+
+/* Cors setup */
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}))
 
 /* For track server's activity */
 app.use(morgan("dev"));
