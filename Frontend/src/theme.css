@@ -1,0 +1,61 @@
+:root {
+  color-scheme: dark;
+
+  --color-brand: #1ed760;
+  --color-brand-hover: #3be477;
+  --color-brand-pressed: #17a84a;
+  --color-on-brand: #000000;
+
+  --color-background: #121212;
+  --color-surface: #181818;
+  --color-surface-raised: #242424;
+  --color-surface-hover: #2a2a2a;
+  --color-border: #3e3e3e;
+  --color-border-strong: #6a6a6a;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b3b3b3;
+  --color-text-muted: #6a6a6a;
+  --color-text-disabled: #535353;
+  --color-danger: #f15e6c;
+  --color-success: #1ed760;
+  --color-focus: #ffffff;
+
+  --font-family-sans: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 8px 24px rgb(0 0 0 / 35%);
+  --shadow-overlay: 0 16px 48px rgb(0 0 0 / 50%);
+
+  --content-width: 75rem;
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+
+  --motion-fast: 120ms ease;
+  --motion-standard: 200ms ease;
+}

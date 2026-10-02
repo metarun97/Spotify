@@ -1,0 +1,289 @@
+.register-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgb(42 42 42 / 88%) 0, var(--color-background) 34rem),
+    var(--color-background);
+}
+
+.register-header {
+  min-height: 5rem;
+  padding: var(--space-4) var(--page-gutter);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.register-wordmark {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.register-header-prompt {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.register-header-prompt a,
+.register-terms a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.register-header-prompt a:hover,
+.register-terms a:hover {
+  color: var(--color-brand);
+}
+
+.register-content {
+  width: min(100% - (var(--page-gutter) * 2), 28rem);
+  margin: 0 auto;
+  padding: var(--space-12) 0 var(--space-16);
+  animation: register-enter var(--motion-standard) both;
+}
+
+.register-content h1 {
+  margin: 0 0 var(--space-8);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: var(--line-height-tight);
+  text-align: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.register-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.register-field label,
+.register-name-fields legend,
+.register-role-fields legend {
+  padding: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.register-field input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  transition:
+    border-color var(--motion-fast),
+    background-color var(--motion-fast);
+}
+
+.register-field input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.register-field input:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.register-field input:focus-visible {
+  border-color: var(--color-text-primary);
+  background: var(--color-surface-hover);
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.register-name-fields,
+.register-role-fields {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.register-name-fields legend,
+.register-role-fields legend {
+  margin-bottom: var(--space-2);
+}
+
+.register-name-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.register-role-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.register-role-option {
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast),
+    background-color var(--motion-fast);
+}
+
+.register-role-option:has(input:checked) {
+  border-color: var(--color-brand);
+  background: rgb(30 215 96 / 8%);
+}
+
+.register-role-option input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--color-brand);
+}
+
+.register-role-option:focus-within {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.register-submit,
+.register-google {
+  width: 100%;
+  min-height: 3.25rem;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast),
+    border-color var(--motion-fast),
+    transform var(--motion-fast);
+}
+
+.register-submit {
+  margin-top: var(--space-1);
+  border: 0;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.register-submit:hover {
+  background: var(--color-brand-hover);
+  transform: scale(1.02);
+}
+
+.register-submit:active,
+.register-google:active {
+  transform: scale(0.99);
+}
+
+.register-google {
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.register-google:hover {
+  border-color: var(--color-text-primary);
+}
+
+.register-google-mark {
+  color: #4285f4;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.register-divider {
+  height: 1px;
+  position: relative;
+  background: var(--color-border);
+  display: grid;
+  place-items: center;
+}
+
+.register-divider span {
+  padding: 0 var(--space-4);
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.register-terms {
+  margin-top: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+}
+
+.register-terms a {
+  color: var(--color-text-secondary);
+}
+
+@keyframes register-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .register-header {
+    min-height: 4.25rem;
+  }
+
+  .register-content {
+    padding-top: var(--space-8);
+  }
+
+  .register-content h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .register-header-prompt {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-content {
+    animation: none;
+  }
+
+  .register-field input,
+  .register-role-option,
+  .register-submit,
+  .register-google {
+    transition: none;
+  }
+}
