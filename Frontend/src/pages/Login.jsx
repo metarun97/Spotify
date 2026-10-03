@@ -94,7 +94,7 @@ function Login() {
             className="register-google"
             type="button"
             onClick={() => {
-              window.location.href = 'http://localhost:3000/api/auth/login';
+              window.location.href = 'http://localhost:3000/api/auth/google';
             }}
           >
             <span className="register-google-mark" aria-hidden="true">

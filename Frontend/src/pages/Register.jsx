@@ -59,6 +59,7 @@ function Register() {
           withCredentials: true,
         },
       );
+      console.log(response);
       navigate('/');
     } catch (error) {
       console.log('Error to Register a user', error);
@@ -176,7 +177,7 @@ function Register() {
             className="register-google"
             type="button"
             onClick={() => {
-              window.location.href = 'http://localhost:3000/api/auth/register';
+              window.location.href = 'http://localhost:3000/api/auth/google';
             }}
           >
             <span className="register-google-mark" aria-hidden="true">
