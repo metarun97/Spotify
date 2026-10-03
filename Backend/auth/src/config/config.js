@@ -12,4 +12,4 @@ const _config = {
   RABBITMQ_URI: process.env.RABBITMQ_URI,
 }
 
-export default _config;
+export default Object.freeze(_config);

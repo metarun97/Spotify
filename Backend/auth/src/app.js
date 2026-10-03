@@ -11,7 +11,6 @@ import cors from "cors";
 /* Server created */
 const app = express();
 
-
 /* Cors setup */
 app.use(cors({
   origin: "http://localhost:5173",
@@ -30,7 +29,7 @@ app.use(express.json());
 /* For parse the form data */
 app.use(express.urlencoded({ extended: true }));
 
-/*  */
+/* To cative passport authentication middleware */
 app.use(passport.initialize());
 
 // Configure Passport to use Google OAuth 2.0 strategy

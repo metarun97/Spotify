@@ -145,15 +145,7 @@ export const googleAuthCallback = async (req, res) => {
 
       res.cookie("token", token);
 
-      res.status(200).json({
-        message: "User loggedIn successfully!",
-        user: {
-          id: isUserAlreadyExists._id,
-          email: isUserAlreadyExists.email,
-          fullname: isUserAlreadyExists.fullname,
-          role: isUserAlreadyExists.role
-        }
-      })
+      res.redirect("http://localhost:5173")
     }
 
 
@@ -178,15 +170,7 @@ export const googleAuthCallback = async (req, res) => {
 
     res.cookie("token", token);
 
-    res.status(201).json({
-      message: "User created successfully!",
-      user: {
-        id: newUser._id,
-        email: newUser.email,
-        fullname: newUser.fullname,
-        role: newUser.role
-      }
-    })
+    res.redirect("http://localhost:5173")
 
 
   } catch (error) {
