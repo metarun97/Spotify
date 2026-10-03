@@ -7,6 +7,6 @@ connect().then(startListener);
 
 
 /* Server Started */
-app.listen(3000, () => {
-  console.log("Notification Server is running on port 3000")
+app.listen(3001, () => {
+  console.log("Notification Server is running on port 3001")
 })
