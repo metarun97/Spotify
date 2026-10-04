@@ -12,7 +12,7 @@ import { publishToQueue } from '../broker/rabbit.js'
  */
 export const register = async (req, res) => {
   try {
-    const { email, password, fullname: { firstName, lastName } } = req.body;
+    const { email, password, fullname: { firstName, lastName }, role = "user" } = req.body;
 
     const isUserAlreadyExists = await userModel.findOne({ email });
 
@@ -29,12 +29,14 @@ export const register = async (req, res) => {
       email,
       password: hash,
       fullname: { firstName, lastName },
+      role,
     })
 
 
     const token = jwt.sign({
       id: user._id,
-      role: user.role
+      role: user.role,
+      fullname: user.fullname
     }, config.JWT_SECRET, { expiresIn: "2d" })
 
 
@@ -96,6 +98,7 @@ export const login = async (req, res) => {
     const token = jwt.sign({
       id: user._id,
       role: user.role,
+      fullname: user.fullname,
     }, config.JWT_SECRET, { expiresIn: "2d" })
 
 
@@ -140,7 +143,8 @@ export const googleAuthCallback = async (req, res) => {
     if (isUserAlreadyExists) {
       const token = jwt.sign({
         id: isUserAlreadyExists._id,
-        role: isUserAlreadyExists.role
+        role: isUserAlreadyExists.role,
+        fullname: isUserAlreadyExists.fullname
       }, config.JWT_SECRET, { expiresIn: "2d" })
 
       res.cookie("token", token);
@@ -166,7 +170,11 @@ export const googleAuthCallback = async (req, res) => {
       role: newUser.role
     })
 
-    const token = jwt.sign({ id: newUser._id, role: newUser.role }, config.JWT_SECRET, { expiresIn: "2d" })
+    const token = jwt.sign({
+      id: newUser._id,
+      role: newUser.role,
+      fullname: newUser.fullname,
+    }, config.JWT_SECRET, { expiresIn: "2d" })
 
     res.cookie("token", token);
 
