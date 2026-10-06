@@ -58,6 +58,14 @@ router.post("/playlist", authMiddleware.authArtistMiddleware, musicController.cr
 
 
 /**
+@route GET /api/music/playlist/artist
+@description get a single artist's playlist
+@access private
+*/
+router.get("/playlist/artist", authMiddleware.authArtistMiddleware, musicController.getArtistPlaylist);
+
+
+/**
 @route GET /api/music/playlists
 @description get  artist's playlists
 @access private

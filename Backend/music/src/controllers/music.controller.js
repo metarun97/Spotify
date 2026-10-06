@@ -230,3 +230,32 @@ export const getPlaylistById = async (req, res) => {
     })
   }
 }
+
+
+
+/**
+ @name getArtistPlaylist
+ @description For get artist's playlist
+ @access private
+ */
+export const getArtistPlaylist = async (req, res) => {
+  try {
+
+    const playlist = await playlistModel.find({ artistId: req.user.id });
+
+    if (!playlist) {
+      return res.status(404).json({
+        message: "Playlist not found!",
+      })
+    }
+
+    res.status(200).json({ playlist });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Internal server error!",
+    })
+  }
+}
