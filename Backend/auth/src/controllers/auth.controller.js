@@ -48,7 +48,6 @@ export const register = async (req, res) => {
       role: user.role
     })
 
-
     res.cookie("token", token)
 
     res.status(201).json({
@@ -105,13 +104,13 @@ export const login = async (req, res) => {
     res.cookie("token", token);
 
     res.status(200).json({
-      message: "User Logged in successfully!",
-      user: {
-        id: user._id,
-        email: user.email,
-        fullname: user.fullname,
-        role: user.role,
-      }
+    message: "User Logged in successfully!",
+    user: {
+      id: user._id,
+      email: user.email,
+      fullname: user.fullname,
+      role: user.role,
+    }
     })
 
   } catch (error) {
@@ -149,6 +148,11 @@ export const googleAuthCallback = async (req, res) => {
 
       res.cookie("token", token);
 
+      if (isUserAlreadyExists.role === "artist") {
+        return res.redirect("http://localhost:5173/artist/dashboard");
+      }
+
+
       res.redirect("http://localhost:5173")
     }
 
@@ -176,7 +180,12 @@ export const googleAuthCallback = async (req, res) => {
       fullname: newUser.fullname,
     }, config.JWT_SECRET, { expiresIn: "2d" })
 
+
     res.cookie("token", token);
+
+    if (newUser.role === "artist") {
+      return res.redirect("http://localhost:5173/artist/dashboard");
+    }
 
     res.redirect("http://localhost:5173")
 
