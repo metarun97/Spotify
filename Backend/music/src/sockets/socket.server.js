@@ -4,6 +4,7 @@ import config from "../config/config.js";
 import * as cookie from "cookie";
 
 
+/* Socket server setup */
 function initSocketServer(httpServer) {
   const io = new Server(httpServer, {
     cors: {
@@ -12,14 +13,17 @@ function initSocketServer(httpServer) {
     }
   })
 
-  /* middleware to check is user logged In or not */
+  /* Middleware to check is user logged In or not */
   io.use((socket, next) => {
-    const cookies = cookie.parse(socket.handshake.headers.cookie || "");
+
+    const cookies = cookie.parse(socket.handshake.headers.cookie || " ");
 
     const token = cookies.token;
 
     if (!token) {
+
       return next(new Error("Authentication error!"));
+
     }
 
     try {
@@ -30,12 +34,17 @@ function initSocketServer(httpServer) {
       next()
 
     } catch (error) {
+
       return next(new Error("Authentication error!"));
+
     }
   })
 
-
+  /* Connection setup with broadcast a user */
   io.on("connection", (socket) => {
+
+    console.log("A user connected", socket.user);
+
     socket.join(socket.user.id);
 
     socket.on("play", (data) => {
