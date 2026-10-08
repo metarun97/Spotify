@@ -8,6 +8,7 @@ function Login() {
     email: '',
     password: '',
   });
+  // const [userole, setuseRole] = useState(null);
 
   const navigate = useNavigate();
 
@@ -35,7 +36,11 @@ function Login() {
         },
       );
 
-      navigate('/');
+      /* Navigate to artisht dashboard if you have artist role */
+      if (response.data.user.role === 'artist') {
+        navigate('/artist/dashboard');
+      }
+
     } catch (error) {
       console.log('Error in Login user', error);
     }

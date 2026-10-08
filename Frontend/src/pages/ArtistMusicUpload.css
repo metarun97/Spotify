@@ -1,0 +1,328 @@
+.artist-upload-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 82% 0%, rgb(30 215 96 / 11%), transparent 34rem),
+    var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.artist-upload-header {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 var(--page-gutter);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+.artist-upload-wordmark,
+.artist-upload-back {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.artist-upload-wordmark {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.artist-upload-back {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.artist-upload-back:hover {
+  color: var(--color-brand);
+}
+
+.artist-upload-content {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+}
+
+.artist-upload-eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--color-brand);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.artist-upload-content h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.artist-upload-subtitle {
+  margin-top: 0.6rem;
+  color: var(--color-text-secondary);
+}
+
+.artist-upload-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.artist-upload-field {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.artist-upload-title-field,
+.artist-upload-status,
+.artist-upload-actions {
+  grid-column: 1 / -1;
+}
+
+.artist-upload-field label {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.artist-upload-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.artist-upload-field input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.artist-upload-field input[type='file'] {
+  min-height: 58px;
+  padding: 0.55rem;
+  cursor: pointer;
+}
+
+.artist-upload-field input[type='file']::file-selector-button {
+  min-height: 40px;
+  margin-right: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.artist-upload-hint {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.artist-upload-preview {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.artist-upload-preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.artist-upload-preview h2 {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.artist-upload-clear-preview {
+  padding: 0.3rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+}
+
+.artist-upload-clear-preview:hover:not(:disabled) {
+  color: var(--color-text-primary);
+}
+
+.artist-upload-clear-preview:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.artist-upload-preview-track {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.artist-upload-preview-art {
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(145deg, #dfad69, #bc5f57 55%, #344c4d);
+  color: rgb(255 255 255 / 85%);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.artist-upload-preview-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-upload-preview-copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.artist-upload-preview-copy strong,
+.artist-upload-preview-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artist-upload-preview-copy strong {
+  color: var(--color-text-primary);
+}
+
+.artist-upload-preview-copy span,
+.artist-upload-preview-hint {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.artist-upload-preview-hint {
+  margin: 0;
+}
+
+.artist-upload-audio-preview {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+}
+
+.artist-upload-status {
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.artist-upload-status.is-success {
+  color: var(--color-brand);
+}
+
+.artist-upload-status.is-error {
+  color: #ff8585;
+}
+
+.artist-upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.artist-upload-cancel {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+}
+
+.artist-upload-cancel:hover {
+  color: var(--color-text-primary);
+}
+
+.artist-upload-submit {
+  min-width: 150px;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.artist-upload-submit:hover:not(:disabled) {
+  background: var(--color-brand-hover);
+}
+
+.artist-upload-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .artist-upload-header {
+    min-height: 60px;
+    padding: 0 1rem;
+  }
+
+  .artist-upload-content {
+    width: min(100% - 2rem, 440px);
+    padding: 2.5rem 0 3rem;
+  }
+
+  .artist-upload-content h1 {
+    font-size: 1.65rem;
+  }
+
+  .artist-upload-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .artist-upload-title-field,
+  .artist-upload-preview,
+  .artist-upload-status,
+  .artist-upload-actions {
+    grid-column: auto;
+  }
+
+  .artist-upload-preview-art {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+  }
+
+  .artist-upload-actions {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 360px) {
+  .artist-upload-back {
+    font-size: var(--font-size-xs);
+  }
+
+  .artist-upload-submit {
+    min-width: 130px;
+  }
+}
